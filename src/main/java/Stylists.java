@@ -38,34 +38,34 @@ public class Stylists {
       }
 
 
-      // public List<Clients> getClients() {
-      //   try(Connection con = DB.sql2o.open()) {
-      //     String sql = "SELECT * FROM clients WHERE stylistId=:id";
-      //     return con.createQuery(sql)
-      //       .addParameter("id", this.id)
-      //       .executeAndFetch(Clients.class);
-      //   }
-      // }
+      public List<Clients> getClients() {
+        try(Connection con = DB.sql2o.open()) {
+          String sql = "SELECT * FROM clients WHERE stylistId=:id";
+          return con.createQuery(sql)
+            .addParameter("id", this.id)
+            .executeAndFetch(Clients.class);
+        }
+      }
 
-      // @Override
-      // public boolean equals(Object otherStylists) {
-      //   if (!(otherStylists instanceof Stylists)) {
-      //     return false;
-      //   } else {
-      //     Stylists newStylists = (Stylists) otherStylists;
-      //     return this.getName().equals(newStylists.getName()) &&
-      //            this.getId() == newStylists.getId();
-      //   }
-      // }
+      @Override
+      public boolean equals(Object otherStylists) {
+        if (!(otherStylists instanceof Stylists)) {
+          return false;
+        } else {
+          Stylists newStylists = (Stylists) otherStylists;
+          return this.getName().equals(newStylists.getName()) &&
+                 this.getId() == newStylists.getId();
+        }
+      }
 
 
-      // public void save() {
-      //   try(Connection con = DB.sql2o.open()) {
-      //     String sql = "INSERT INTO stylists(name) VALUES (:name)";
-      //     this.id = (int) con.createQuery(sql, true)
-      //       .addParameter("name", this.name)
-      //       .executeUpdate()
-      //       .getKey();
-      //   }
-      // }
+      public void save() {
+        try(Connection con = DB.sql2o.open()) {
+          String sql = "INSERT INTO stylists(name) VALUES (:name)";
+          this.id = (int) con.createQuery(sql, true)
+            .addParameter("name", this.name)
+            .executeUpdate()
+            .getKey();
+        }
+      }
 }
