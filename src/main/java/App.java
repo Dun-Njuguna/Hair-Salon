@@ -6,24 +6,24 @@ import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
-        // staticFileLocation("/public");
-        // String layout = "templates/layout.vtl";
+        staticFileLocation("/public");
+        String layout = "templates/layout.vtl";
 
-        // get("/", (request, response) -> {
-        //     Map<String, Object> model = new HashMap<String, Object>();
-        //     model.put("stylists", Stylists.all());
-        //     model.put("template", "templates/index.vtl");
-        //     return new ModelAndView(model, layout);
-        // }, new VelocityTemplateEngine());
+        get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            model.put("stylists", Stylists.all());
+            model.put("template", "templates/index.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
 
-        // post("/stylists", (request, response) -> {
-        //   Map<String, Object> model = new HashMap<String, Object>();
-        //   String name = request.queryParams("name");
-        //   Stylists newStylists = new Stylists(name);
-        //   newStylists.save();
-        //   model.put("template", "templates/index.vtl");
-        //   return new ModelAndView(model, layout);
-        // }, new VelocityTemplateEngine());
+        post("/stylists", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          String name = request.queryParams("name");
+          Stylists newStylists = new Stylists(name);
+          newStylists.save();
+          model.put("template", "templates/index.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
 
         // post("/clients", (request, response) -> {
         //   Map<String, Object> model = new HashMap<String, Object>();
