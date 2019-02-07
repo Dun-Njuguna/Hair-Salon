@@ -3,15 +3,15 @@ import static org.junit.Assert.*;
 import java.time.LocalDateTime;
 import org.sql2o.*;
 
-public class Clientsest {
+public class ClientsTest {
 
-// creates a new connection to the database before every test
+
       @Before
       public void setUp() {
         DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/salon", "njuguna", "pass");
       }
 
-// clears the database after every test
+
       @After
       public void tearDown() {
         try(Connection con = DB.sql2o.open()) {
@@ -31,10 +31,10 @@ public class Clientsest {
     @Test
     public void Clients_instantiatesWithName_String() {
         Clients myTask = new Clients("Mow", 1);
-        assertEquals("Mow the lawn", myTask.getName());
+        assertEquals("Mow", myTask.getName());
     }
 
-// returns all data in database while still saving using sava()
+
       @Test
       public void all_returnsAllInstancesOfClient_true() {
         Clients firstClient = new Clients("Mow", 1);
@@ -45,14 +45,14 @@ public class Clientsest {
         assertEquals(true, Clients.all().get(1).equals(secondClient));
       }
 
-// Our Task.find(myTask.getId()) uses the Task's id to query the database and return a Task object.
+
       @Test
       public void find_returnsClientWithSameId_secondClient() {
-        Client firstClient = new Client("Mow", 1);
+        Clients firstClient = new Clients("Mow", 1);
         firstClient.save();
-        Client secondClient = new Client("Mow", 2);
-        secondTask.save();
-        assertEquals(Client.find(secondTask.getId()), secondTask);
+        Clients secondClient = new Clients("Mow", 2);
+        secondClient.save();
+        assertEquals(Clients.find(secondClient.getId()), secondClient);
       }
 
     @Test
@@ -61,7 +61,7 @@ public class Clientsest {
         assertEquals(Clients.all().size(), 0);
     }
 
-// this test checks that the id is greater than 0 from DB
+
     @Test
     public void getId_clientsInstantiateWithAnID() {
       Clients myClient = new Clients("Mow", 1);
@@ -70,7 +70,7 @@ public class Clientsest {
     }
 
 
-// a test to check whether to instances of info retriieved from the database are the same 
+
     @Test
     public void equals_returnsTrueIfClientsAretheSame() {
       Clients firstClient = new Clients("Mow", 1);
@@ -78,7 +78,7 @@ public class Clientsest {
       assertTrue(firstClient.equals(secondClient));
     }
 
-// saving objects into the database
+
     @Test
     public void save_returnsTrueIfClientsAretheSame() {
       Clients myClient = new Clients("Mow", 1);
@@ -86,7 +86,7 @@ public class Clientsest {
       assertTrue(Clients.all().get(0).equals(myClient));
     }
 
-// test ids of tasks in database and application
+
     @Test
     public void save_assignsIdToObject() {
       Clients myClient = new Clients("Mow", 1);
@@ -95,9 +95,7 @@ public class Clientsest {
       assertEquals(myClient.getId(), savedClient.getId());
     }
 
-// Next, we'll write a unit test that ensures 
-//we can save a categoryId into our tasks table, 
-//thereby associating a Task with its Category:
+
       @Test
       public void save_savesClientsIdIntoDB_true() {
         Stylists myStylist = new Stylists("Household chores");
@@ -105,7 +103,7 @@ public class Clientsest {
         Clients myClient = new Clients("Mow", myStylist.getId());
         myClient.save();
         Clients savedClient = Clients.find(myClient.getId());
-        assertEquals(savedClient.getStylistId(), myClient.getId());
+        assertEquals(savedClient.getStylistId(), myStylist.getId());
       }
 
 }

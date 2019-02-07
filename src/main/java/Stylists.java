@@ -14,7 +14,7 @@ public class Stylists {
     return name;
   }
 
-// Here, we construct a basic SQL query requesting all id and description data from the styliststable.
+
   public static List<Stylists> all() {
     String sql = "SELECT id, name FROM stylists";
     try(Connection con = DB.sql2o.open()) {
@@ -26,13 +26,8 @@ public class Stylists {
    return id;
   }
   
-// To make it pass (find test), we can re-populate our static find() method with code to locate a specific Stylists:
-// Here we are using a select query using where id=:id. 
-// We use .addParameter("id", id)to pass in the id argument to the sql query 
-// and then we run .executeAndFetchFirst(Stylists.class);. 
-// This will return the first item in the collection returned by our database, 
-// cast as a Stylists object. Finally, we return that Stylists.
-    public static Category find(int id) {
+
+    public static Stylists find(int id) {
         try(Connection con = DB.sql2o.open()) {
           String sql = "SELECT * FROM stylists where id=:id";
           Stylists stylists = con.createQuery(sql)
@@ -42,9 +37,7 @@ public class Stylists {
         }
       }
 
-// To make a list of our in memory objects, we first construct a task array containing those objects. 
-// We then use a new method Arrays.asList(tasks) to save those items into a list. 
-// (You will need to add import java.util.Arrays; to the top of the file to use Arrays.asList.)
+
       public List<Clients> getClients() {
         try(Connection con = DB.sql2o.open()) {
           String sql = "SELECT * FROM clients WHERE stylistId=:id";
@@ -53,8 +46,7 @@ public class Stylists {
             .executeAndFetch(Clients.class);
         }
       }
-// equals() method 
-// We should also modify our equals() method to account for this new property:(ids)
+
       @Override
       public boolean equals(Object otherStylists) {
         if (!(otherStylists instanceof Stylists)) {
@@ -66,8 +58,7 @@ public class Stylists {
         }
       }
 
-// .save() method
-// we'll use save() to assign the object the same id as its data in the database:
+
       public void save() {
         try(Connection con = DB.sql2o.open()) {
           String sql = "INSERT INTO stylists(name) VALUES (:name)";

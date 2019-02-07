@@ -1,13 +1,40 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>To Do List</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='/app.css'>
-  </head>
-  <body>
-    <div class="container">
-      #parse( $template )
-    </div>
-  </body>
-</html>
+<h1>Hair Salon</h1>
+
+<h2> All Stylists: </h2>
+
+#if($stylists)
+  <p>Click on a Stylist to see their clients:</p>
+  <ul>
+    #foreach ($stylist in $stylists)
+      <li><a href="/clients/$stylist.getId()">$stylist.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>There are no Stylists yet!</p>
+#end
+
+<h2>Add New Stylists:</h2>
+
+<form action="/stylists" method="post">
+  <label for="name">Stylists name</label>
+  <input id="name" name="name" type="text">
+  <button type="submit" class="btn btn-success">Add Stylist</button>
+</form>
+
+<h2>Add Client to Stylist:</h2>
+
+<form action="/clients" method="post">
+  <label for="stylistId">Select a Stylist</label>
+  <select id='stylistId' name='stylistId' type='text'>
+    #foreach($stylist in $stylists)
+      <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+  </select>
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add Client</button>
+</form>
