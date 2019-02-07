@@ -21,7 +21,7 @@ public class App {
           String name = request.queryParams("name");
           Stylists newStylists = new Stylists(name);
           newStylists.save();
-          model.put("template", "templates/index.vtl");
+          model.put("template", "templates/success.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
@@ -36,7 +36,7 @@ public class App {
           newClients.save();
         
           model.put("stylists", stylists);
-          model.put("template", "templates/index.vtl");
+          model.put("template", "templates/success.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
