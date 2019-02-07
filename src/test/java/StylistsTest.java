@@ -103,4 +103,12 @@ public class StylistsTest {
         assertTrue(myStylists.getClients().containsAll(Arrays.asList(clients)));
       }
 
+      @Test
+      public void update_updatesStylistsDescription_true() {
+        Stylists myStylists = new Stylists("Mow");
+        myStylists.save();
+        myStylists.update("Mows");
+        assertEquals("Mows", Stylists.find(myStylists.getId()).getName());
+      }
+
 }
