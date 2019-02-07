@@ -25,28 +25,28 @@ public class App {
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
-        // post("/clients", (request, response) -> {
-        //   Map<String, Object> model = new HashMap<String, Object>();
+        post("/clients", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
         
-        //   Stylists stylists = Stylists.find(Integer.parseInt(request.queryParams("stylistId")));
+          Stylists stylists = Stylists.find(Integer.parseInt(request.queryParams("stylistId")));
         
-        //   String name = request.queryParams("name");
-        //   Clients newClients = new Clients(name, stylists.getId());
+          String name = request.queryParams("name");
+          Clients newClients = new Clients(name, stylists.getId());
         
-        //   newClients.save();
+          newClients.save();
         
-        //   model.put("stylists", stylists);
-        //   model.put("template", "templates/index.vtl");
-        //   return new ModelAndView(model, layout);
-        // }, new VelocityTemplateEngine());
+          model.put("stylists", stylists);
+          model.put("template", "templates/index.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
 
-        // get("/clients/:id", (request, response) -> {
-        //   Map<String, Object> model = new HashMap<String, Object>();
-        //   Stylists stylists = Stylists.find(Integer.parseInt(request.params(":id")));
-        //   model.put("stylists", stylists);
-        //   model.put("template", "templates/clients.vtl");
-        //   return new ModelAndView(model, layout);
-        // }, new VelocityTemplateEngine());
+        get("/clients/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          Stylists stylists = Stylists.find(Integer.parseInt(request.params(":id")));
+          model.put("stylists", stylists);
+          model.put("template", "templates/clients.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
         
         // ProcessBuilder process = new ProcessBuilder();
         //  Integer port;
