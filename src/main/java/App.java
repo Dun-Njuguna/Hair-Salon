@@ -109,7 +109,7 @@ public class App {
 
 // delete client
 
-        post("/stylists/:stylists_id/clients/:id/delete", (request, response) -> {
+        post("/client/:stylists_id/clients/:id/delete", (request, response) -> {
           HashMap<String, Object> model = new HashMap<String, Object>();
           Clients clients = Clients.find(Integer.parseInt(request.params("id")));
           Stylists stylists = Stylists.find(clients.getStylistId());
@@ -121,13 +121,12 @@ public class App {
 
 // delete stylists
 
-        post("/stylists/:stylists_id/clients/:id/delete", (request, response) -> {
+        post("/stylists/:id/delete", (request, response) -> {
           HashMap<String, Object> model = new HashMap<String, Object>();
-          Clients clients = Clients.find(Integer.parseInt(request.params("id")));
-          Stylists stylists = Stylists.find(clients.getStylistId());
-          clients.delete();
+          Stylists stylists = Stylists.find(Integer.parseInt(request.params("id")));
+          stylists.delete();
           model.put("stylists", stylists);
-          model.put("template", "templates/update_client.vtl");
+          model.put("template", "templates/update_stylist_details.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 

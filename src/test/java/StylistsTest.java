@@ -111,4 +111,15 @@ public class StylistsTest {
         assertEquals("Mows", Stylists.find(myStylists.getId()).getName());
       }
 
+// delete test
+
+      @Test
+      public void delete_deletesStylists_true() {
+        Stylists myStylists = new Stylists("Mow");
+        myStylists.save();
+        int myStylistsId = myStylists.getId();
+        myStylists.delete();
+        assertEquals(null, Stylists.find(myStylistsId));
+      }
+
 }

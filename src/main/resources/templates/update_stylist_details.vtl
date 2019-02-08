@@ -1,11 +1,21 @@
-<h1>$stylists.getName() stylist.</h1>
+#if ($stylists)
+	<h1>$stylists.getName() stylist.</h1>
 
-<h2>Edit Stylist:</h2>
+	<h2>Edit Stylist:</h2>
 
-<form action="/stylists/$stylists.getId()" method="post">
-  <label for="name">Name</label>
-  <input id="name" name="name" type="text">
-  <button type="submit" class="btn btn-info">Update Stylist</button>
-</form>
+	<form action="/stylists/$stylists.getId()" method="post">
+	  <label for="name">Name</label>
+	  <input id="name" name="name" type="text">
+	  <button type="submit" class="btn btn-info">Update Stylist</button>
+	</form>
+
+	<form action="/stylists/$stylists.getId()/delete" method="post">
+	  <button type="submit" class="btn btn-danger" id="delete-task">Delete Stylist</button>
+	</form>
+#else
+  <em><p>Oops! We can't seem to find your Stylist.</p></em>
+#end
 
 <a href="/stylists/$stylists.getId()">Return to $stylists.getName()</a>
+
+<a href="/">Home</a>
