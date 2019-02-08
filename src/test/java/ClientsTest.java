@@ -114,5 +114,15 @@ public class ClientsTest {
         assertEquals("Mows", Clients.find(myClients.getId()).getName());
       }
 
+// delete test
 
+      @Test
+      public void delete_deletesClient_true() {
+        Clients myClients= new Clients("Mow", 1);
+        myClients.save();
+        int myClientsId = myClients.getId();
+        myClients.delete();
+        assertEquals(null, Clients.find(myClientsId));
+      }
+      
 }
