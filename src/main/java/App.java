@@ -81,25 +81,35 @@ public class App {
 
 // update stylist
 
-        get("/stylists/:stylists_id/clients/:id", (request, response) -> {
+        get("/stylist/update", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();
-        Stylists stylists = Stylists.find(Integer.parseInt(request.params(":stylists_id")));
-        model.put("stylists", stylists);
+        model.put("stylists", Stylists.all());
         model.put("template", "templates/update_stylist.vtl");
         return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
-
-        post("/stylists/:stylists_id/clients/:id", (request, response) -> {
+        get("/stylists/update/:id", (request, response) -> {
           Map<String, Object> model = new HashMap<String, Object>();
-          Clients clients = Clients.find(Integer.parseInt(request.params("id")));
+          Stylists stylists = Stylists.find(Integer.parseInt(request.params(":id")));
+          model.put("stylists", stylists);
+          model.put("template", "templates/update_stylist_details.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());        
+
+        post("/stylists/:id", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          Stylists stylists = Stylists.find(Integer.parseInt(request.params("id")));
           String name = request.queryParams("name");
-          Stylists stylists = Stylists.find(clients.getStylistId());
-          clients.update(name);
-          String url = String.format("/stylists/%d/clients/%d", stylists.getId(), clients.getId());
+          Stylists newStylists = Stylists.find(stylists.getId());
+          stylists.update(name);
+          String url = String.format("/stylists/%d", newStylists.getId());
           response.redirect(url);
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+
+
+// update stylist
 
         // ProcessBuilder process = new ProcessBuilder();
         //  Integer port;

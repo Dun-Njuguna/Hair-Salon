@@ -1,11 +1,16 @@
-<h2> Stylist name: $stylists.getName().</h2>
+<h1>Hair Salon</h1>
 
-<h2>Edit stylists name:</h2>
+<h2> All Stylists: </h2>
 
-<form action="/stylists/$stylists.getId()" method="post">
-  <label for="name">Name</label>
-  <input id="name" name="name" type="text">
-  <button type="submit" class="btn btn-info">Update Client</button>
-</form>
+<span>Click on stylist to update or delete</span>
 
-<a href="/stylists/$stylists.getId()">Return to $stylists.getName()</a>
+#if($stylists)
+
+  <ul>
+    #foreach ($stylist in $stylists)
+      <li><a href="/stylists/update/$stylist.getId()">$stylist.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>There are no Stylists yet!</p>
+#end
