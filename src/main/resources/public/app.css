@@ -1,0 +1,64 @@
+body
+{
+	background-color: #FFFFFF;
+}
+#navbar
+{
+	background-color: #FF69B4;
+	color: white;
+	
+}
+.container-fluid
+{
+	margin-top: 20px;
+	
+}
+.jumbotron
+{
+	margin: 20px;
+	min-height: 500px;
+	background-image: url(./images/background-salon-pink-2.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.first
+{
+	width: 60%;
+	min-height:200px; 
+	padding-left: 100px;
+}
+.second
+{
+	width: 100%;
+}
+.apart
+{
+	margin: 20px;
+}
+.click
+{
+	padding-left: 100px;
+}
+.list
+{
+	padding-left: 200px;
+}
+.update
+{
+	padding-left: 100px;
+}
+.btn-success
+{
+	background-color: #FF69B4;
+	border-color: #FF1493;
+}
+.footer
+{
+	min-height: 200px;
+	background-color: #FF69B4; 
+}
+.col-md-12
+{
+	text-align: center;
+	padding-top: 5%;
+}

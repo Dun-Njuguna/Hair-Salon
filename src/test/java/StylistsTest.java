@@ -7,7 +7,7 @@ public class StylistsTest {
 
       @Before
       public void setUp() {
-        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/salon", "njuguna", "pass");
+        DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/hair_salon_test", "njuguna", "pass");
       }
 
       @After

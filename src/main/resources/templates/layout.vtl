@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>To Do List</title>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+
+<head>
+    <title>Hair Salon</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel='stylesheet' href='/app.css'>
-  </head>
-  <body>
-    <div class="container">
-      #parse( $template )
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg " id="navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <div class="jumbotron"></div>
+    <div class="container-fluid justify-content-center">
+
+        #parse( $template )
     </div>
-  </body>
+    <div class="container-fluid justify-content-center">
+        <div class="row footer justify-content-center">
+            <div class="col-md-12 ">
+                <p>footer</p>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
