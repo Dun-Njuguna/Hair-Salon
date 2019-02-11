@@ -1,1 +1,1 @@
-web: ./build/install/Hair Salon/bin/Hair Salon
+web: ./build/install/Hair_Salon/bin/Hair_Salon
