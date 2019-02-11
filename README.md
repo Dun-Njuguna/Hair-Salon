@@ -1,5 +1,5 @@
 # Hair-Salon
-### CREATED BY  Duncan Kariuki
+### CREATED BY Duncan Kariuki
 
 ----------------------------------------------------------------------
 
