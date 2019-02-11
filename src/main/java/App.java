@@ -47,6 +47,20 @@ public class App {
           model.put("template", "templates/clients.vtl");
           return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
+        get("/clients", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          model.put("clients", Clients.all());
+          model.put("template", "templates/all_clients.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/stylist", (request, response) -> {
+          Map<String, Object> model = new HashMap<String, Object>();
+          model.put("stylists", Stylists.all());
+          model.put("template", "templates/all_stylists.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
   // update client
         get("/stylists/:stylists_id/clients/:id", (request, response) -> {
         Map<String, Object> model = new HashMap<String, Object>();

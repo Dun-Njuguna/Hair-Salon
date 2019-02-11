@@ -1,0 +1,14 @@
+<h1>Hair Stylists</h1>
+
+<h2> All Stylists: </h2>
+
+#if($stylists)
+
+  <ul>
+    #foreach ($stylist in $stylists)
+      <li>$stylist.getName()</li>
+    #end
+  </ul>
+#else
+  <p>There are no stylists yet!</p>
+#end
